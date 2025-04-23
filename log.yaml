@@ -1,0 +1,192 @@
+PS C:\Users\HP\Documents\M06_SparkBasics_PYTHON_AZURE\docker> spark-submit `
+>>   --master k8s://https://bdccdev-6qwtltcj.hcp.westeurope.azmk8s.io:443 `
+>>   --deploy-mode cluster `
+>>   --name sparkbasics `
+>>   --conf spark.kubernetes.container.image=acrdevwesteuropemeim.azurecr.io/spark-python-06:latest `
+>>   --conf spark.kubernetes.namespace=default `
+>>   --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark `
+>>   --conf spark.kubernetes.executor.instances=1 `
+>>   --conf spark.kubernetes.driver.request.memory=500m `
+>>   --conf spark.kubernetes.executor.request.memory=500m `
+>>   --conf spark.kubernetes.executor.request.cores=500m `
+>>   --conf spark.pyspark.python=python3 `
+>>   --conf spark.pyspark.driver.python=python3 `
+>>   --conf spark.kubernetes.file.upload.path=wasbs://output@stdevwesteuropemeim.blob.core.windows.net/ `
+>>   --py-files local:///opt/sparkbasics-1.0.0-py3.10.egg `
+>>   local:///opt/src/main/etl_job.py
+25/04/23 15:08:34 INFO SparkKubernetesClientFactory: Auto-configuring K8S client using current context from users K8S config file
+25/04/23 15:08:38 INFO KerberosConfDriverFeatureStep: You have not specified a krb5.conf file locally or via a ConfigMap. Make sure that you have the krb5.conf locally on the driver image.
+25/04/23 15:08:42 INFO LoggingPodStatusWatcherImpl: State changed, new state:
+         pod name: sparkbasics-2d27af96628cc353-driver
+         namespace: default
+         labels: spark-app-name -> sparkbasics, spark-app-selector -> spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9, spark-role -> driver, spark-version -> 3.5.5
+         pod uid: 715a8263-8aa8-4e54-8470-42e0b3b51be0
+         creation time: 2025-04-23T12:08:41Z
+         service account name: spark
+         volumes: spark-local-dir-1, spark-conf-volume-driver, kube-api-access-dpswb
+         node name: aks-default-37745965-vmss000001
+         start time: 2025-04-23T12:08:41Z
+         phase: Pending
+         container status:
+                 container name: spark-kubernetes-driver
+                 container image: acrdevwesteuropemeim.azurecr.io/spark-python-06:latest
+                 container state: waiting
+                 pending reason: ContainerCreating
+25/04/23 15:08:42 INFO LoggingPodStatusWatcherImpl: State changed, new state:
+         pod name: sparkbasics-2d27af96628cc353-driver
+         namespace: default
+         labels: spark-app-name -> sparkbasics, spark-app-selector -> spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9, spark-role -> driver, spark-version -> 3.5.5
+         pod uid: 715a8263-8aa8-4e54-8470-42e0b3b51be0
+         creation time: 2025-04-23T12:08:41Z
+         service account name: spark
+         volumes: spark-local-dir-1, spark-conf-volume-driver, kube-api-access-dpswb
+         node name: aks-default-37745965-vmss000001
+         start time: 2025-04-23T12:08:41Z
+         phase: Pending
+         container status:
+                 container name: spark-kubernetes-driver
+                 container image: acrdevwesteuropemeim.azurecr.io/spark-python-06:latest
+                 container state: waiting
+                 pending reason: ContainerCreating
+25/04/23 15:08:42 INFO LoggingPodStatusWatcherImpl: Waiting for application sparkbasics with application ID spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9 and submission ID default:sparkbasics-2d27af96628cc353-driver to finish...
+25/04/23 15:08:43 INFO LoggingPodStatusWatcherImpl: State changed, new state:
+         pod name: sparkbasics-2d27af96628cc353-driver
+         namespace: default
+         labels: spark-app-name -> sparkbasics, spark-app-selector -> spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9, spark-role -> driver, spark-version -> 3.5.5
+         pod uid: 715a8263-8aa8-4e54-8470-42e0b3b51be0
+         creation time: 2025-04-23T12:08:41Z
+         service account name: spark
+         volumes: spark-local-dir-1, spark-conf-volume-driver, kube-api-access-dpswb
+         node name: aks-default-37745965-vmss000001
+         start time: 2025-04-23T12:08:41Z
+         phase: Pending
+         container status:
+                 container name: spark-kubernetes-driver
+                 container image: acrdevwesteuropemeim.azurecr.io/spark-python-06:latest
+                 container state: terminated
+                 container started at: 2025-04-23T12:08:43Z
+                 container finished at: 2025-04-23T12:08:43Z
+                 exit code: 2
+                 termination reason: Error
+25/04/23 15:08:43 INFO LoggingPodStatusWatcherImpl: Application status for spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9 (phase: Pending)
+25/04/23 15:08:44 INFO LoggingPodStatusWatcherImpl: State changed, new state:
+         pod name: sparkbasics-2d27af96628cc353-driver
+         namespace: default
+         labels: spark-app-name -> sparkbasics, spark-app-selector -> spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9, spark-role -> driver, spark-version -> 3.5.5
+         pod uid: 715a8263-8aa8-4e54-8470-42e0b3b51be0
+         creation time: 2025-04-23T12:08:41Z
+         service account name: spark
+         volumes: spark-local-dir-1, spark-conf-volume-driver, kube-api-access-dpswb
+         node name: aks-default-37745965-vmss000001
+         start time: 2025-04-23T12:08:41Z
+         phase: Failed
+         container status:
+                 container name: spark-kubernetes-driver
+                 container image: acrdevwesteuropemeim.azurecr.io/spark-python-06:latest
+                 container state: terminated
+                 container started at: 2025-04-23T12:08:43Z
+                 container finished at: 2025-04-23T12:08:43Z
+                 exit code: 2
+                 termination reason: Error
+25/04/23 15:08:44 INFO LoggingPodStatusWatcherImpl: Application status for spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9 (phase: Failed)
+25/04/23 15:08:44 INFO LoggingPodStatusWatcherImpl: Container final statuses:
+
+
+         container name: spark-kubernetes-driver
+         container image: acrdevwesteuropemeim.azurecr.io/spark-python-06:latest
+         container state: terminated
+         container started at: 2025-04-23T12:08:43Z
+         container finished at: 2025-04-23T12:08:43Z
+         exit code: 2
+         termination reason: Error
+25/04/23 15:08:44 INFO LoggingPodStatusWatcherImpl: Application sparkbasics with application ID spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9 and submission ID default:sparkbasics-2d27af96628cc353-driver finished
+25/04/23 15:08:44 INFO ShutdownHookManager: Shutdown hook called
+25/04/23 15:08:44 INFO ShutdownHookManager: Deleting directory C:\Users\HP\AppData\Local\Temp\spark-983bd718-e941-43e9-96ea-325be4619d17
+PS C:\Users\HP\Documents\M06_SparkBasics_PYTHON_AZURE\docker> kubectl get pods
+NAME                                  READY   STATUS   RESTARTS   AGE
+sparkbasics-2d27af96628cc353-driver   0/1     Error    0          15s
+sparkbasics-80aa9d96623dc8ad-driver   0/1     Error    0          86m
+sparkbasics-de033096586caf79-driver   0/1     Error    0          47h
+
+PS C:\Users\HP\Documents\M06_SparkBasics_PYTHON_AZURE\docker> kubectl describe pod sparkbasics-2d27af96628cc353-driver
+Name:             sparkbasics-2d27af96628cc353-driver
+Namespace:        default
+Priority:         0
+Service Account:  spark
+Node:             aks-default-37745965-vmss000001/10.224.0.5
+Start Time:       Wed, 23 Apr 2025 15:08:41 +0300
+Labels:           spark-app-name=sparkbasics
+                  spark-app-selector=spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9
+                  spark-role=driver
+                  spark-version=3.5.5
+Annotations:      <none>
+Status:           Failed
+IP:               10.244.1.4
+IPs:
+  IP:  10.244.1.4
+Containers:
+  spark-kubernetes-driver:
+    Container ID:  containerd://56fa478cd662044b65198a8f648ab612ef754384c54dd1669b5aeea67ecf5380
+    Image:         acrdevwesteuropemeim.azurecr.io/spark-python-06:latest
+    Image ID:      acrdevwesteuropemeim.azurecr.io/spark-python-06@sha256:3a89a20c25144be0d8228a5108965fd914bc52dbb81d231ec67ab15ba430cff9
+    Ports:         7078/TCP, 7079/TCP, 4040/TCP
+    Host Ports:    0/TCP, 0/TCP, 0/TCP
+    Args:
+      driver
+      --properties-file
+      /opt/spark/conf/spark.properties
+      --class
+      org.apache.spark.deploy.PythonRunner
+      local:///opt/src/main/etl_job.py
+    State:          Terminated
+      Reason:       Error
+      Exit Code:    2
+      Started:      Wed, 23 Apr 2025 15:08:43 +0300
+      Finished:     Wed, 23 Apr 2025 15:08:43 +0300
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      memory:  1433Mi
+    Requests:
+      cpu:     1
+      memory:  1433Mi
+    Environment:
+      SPARK_USER:                 HP
+      SPARK_APPLICATION_ID:       spark-3fb9eb74098b40f9b5b1b8f6e06c4ff9
+      SPARK_DRIVER_BIND_ADDRESS:   (v1:status.podIP)
+      PYSPARK_PYTHON:             python3
+      PYSPARK_DRIVER_PYTHON:      python3
+      SPARK_LOCAL_DIRS:           /var/data/spark-9e5e11e8-688c-4a3f-ac2e-47b217a7cf9b
+      SPARK_CONF_DIR:             /opt/spark/conf
+    Mounts:
+      /opt/spark/conf from spark-conf-volume-driver (rw)
+      /var/data/spark-9e5e11e8-688c-4a3f-ac2e-47b217a7cf9b from spark-local-dir-1 (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-dpswb (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   False
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  spark-local-dir-1:
+    Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+    Medium:
+    SizeLimit:  <unset>
+  spark-conf-volume-driver:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      spark-drv-4206d596628cd625-conf-map
+    Optional:  false
+  kube-api-access-dpswb:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   Burstable
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:                      <none>

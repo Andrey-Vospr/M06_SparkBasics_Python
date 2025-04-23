@@ -1,0 +1,27 @@
+
+# Sensitive files
+.env
+*.key
+*.pem
+*.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+terraform/main.tf  # only if it has secrets
+
+# IDE & OS junk
+.vscode/
+.idea/
+.DS_Store
+
+# Virtual env
+venv/
+
+# Build & logs
+build/
+dist/
+*.log
+output/
+
+# Python cache
+__pycache__/
+*.pyc
