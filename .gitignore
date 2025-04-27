@@ -7,6 +7,7 @@
 terraform.tfstate
 terraform.tfstate.backup
 terraform/main.tf  # only if it has secrets
+.terraform/
 
 # IDE & OS junk
 .vscode/
@@ -25,3 +26,4 @@ output/
 # Python cache
 __pycache__/
 *.pyc
+
