@@ -48,7 +48,7 @@ geohash_udf = udf(generate_geohash, StringType())
 if __name__ == "__main__":
     spark = SparkSession.builder.appName("ETL_Join_Hotels_Weather").getOrCreate()
     spark.conf.set(
-        "fs.azure.account.key.stdevwesteuropemeim.blob.core.windows.net",
+        "fs.azure.account.key.m06storageaccountbasic.blob.core.windows.net",
         os.getenv("AZURE_STORAGE_KEY")
     )
 
